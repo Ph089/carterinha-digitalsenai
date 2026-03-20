@@ -24,12 +24,13 @@ fun LoginScreen(
     LoginContent(
         login = login,
         senha = senha,
-        onLoginChange = { it },
-        onSenhaChange = { it },
+        onLoginChange = { login = it },
+        onSenhaChange = { senha = it },
         onLoginClick = {
-            navController.navigate(
-                Routes.Carteirinha.route
-            )
+            navController.navigate(Routes.Home.route) {
+
+                popUpTo(Routes.Login.route) { inclusive = true }
+            }
         },
         modifier = modifier
     )

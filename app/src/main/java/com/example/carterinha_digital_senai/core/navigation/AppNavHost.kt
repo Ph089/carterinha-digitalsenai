@@ -11,6 +11,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.carterinha_digital_senai.feature.auth.presentation.LoginScreen
 import com.example.carterinha_digital_senai.feature.carteirinha.presentetion.screen.CarteirinhaScreen
+import com.example.carterinha_digital_senai.feature.home.screen.HomeScreen
 
 
 @Composable
@@ -28,6 +29,9 @@ fun AppNavHost(
                     .padding(16.dp),
                 navController = navController
             )
+        }
+        composable(Routes.Home.route) {
+            HomeScreen(navController = navController)
         }
 
         composable(Routes.Carteirinha.route) {
