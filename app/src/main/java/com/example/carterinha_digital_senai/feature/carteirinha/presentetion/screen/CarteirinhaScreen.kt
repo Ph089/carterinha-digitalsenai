@@ -1,4 +1,4 @@
-package com.example.carterinha_digital_senai.feature.carteirinha.presentetion
+package com.example.carterinha_digital_senai.feature.carteirinha.presentetion.screen
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background

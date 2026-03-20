@@ -1,103 +1,36 @@
 package com.example.carterinha_digital_senai.feature.auth.presentation
 
 
-import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedButton
-import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
+
+
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavController
+import com.example.carterinha_digital_senai.core.navigation.Routes
 
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import com.example.carterinha_digital_senai.core.designsystem.theme.CarterinhadigitalsenaiTheme
 
 @Composable
-fun LoginScreen(modifier: Modifier = Modifier) {
-    Column(
-        modifier = modifier,
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.spacedBy(
-            space = 16.dp,
-            alignment = Alignment.CenterVertically
-        )
-    ) {
-        TextField(
-            value = "",
-            onValueChange = {},
-            label = {
-                Text("Login")
-            },
-        )
-        OutlinedTextField(
-            value = "",
-            onValueChange = {},
-            label = {
-                Text("Senha")
-            },
-        )
+fun LoginScreen(
+    modifier: Modifier = Modifier,
+    navController: NavController
+) {
+    var login by remember { mutableStateOf("") }
+    var senha by remember { mutableStateOf("") }
 
-        Button(
-            onClick = {},
-            modifier=Modifier
-                .fillMaxWidth(.6f),
-            shape = RoundedCornerShape(size = 9.dp),
-            colors = ButtonDefaults.buttonColors(
-                containerColor = MaterialTheme.colorScheme.background
-            ),
-            border = BorderStroke(
-                2.dp,
-                MaterialTheme.colorScheme.primary
+    LoginContent(
+        login = login,
+        senha = senha,
+        onLoginChange = { it },
+        onSenhaChange = { it },
+        onLoginClick = {
+            navController.navigate(
+                Routes.Carteirinha.route
             )
-
-        ) {
-            Text("Entrar")
-        }
-        OutlinedButton(
-            onClick = {}
-        ) {
-            Text("Entrar")
-        }
-    }
-}
-
-@Preview(
-    showBackground = true,
-    showSystemUi = true
-)
-@Composable
-fun PreviewLoginClaro() {
-    CarterinhadigitalsenaiTheme(darkTheme = false) {
-        LoginView(
-            modifier = Modifier
-                .padding(16.dp)
-                .fillMaxSize()
-        )
-    }
-}
-
-@Preview(
-    showBackground = true,
-    showSystemUi = true
-)
-@Composable
-fun PreviewLoginEscuro() {
-    CarterinhadigitalsenaiTheme (darkTheme = true) {
-        LoginView(
-            modifier = Modifier
-                .padding(16.dp)
-                .fillMaxSize()
-        )
-    }
+        },
+        modifier = modifier
+    )
 }

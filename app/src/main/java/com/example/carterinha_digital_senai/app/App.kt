@@ -3,11 +3,14 @@ package com.example.carterinha_digital_senai.app
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.rememberNavController
 import com.example.carterinha_digital_senai.core.designsystem.theme.CarterinhadigitalsenaiTheme
+import com.example.carterinha_digital_senai.core.navigation.AppNavHost
 
 @Composable
 fun App() {
-    CarterinhadigitalsenaiTheme {
-
+    CarterinhadigitalsenaiTheme () {
         val navController = rememberNavController()
+        AppNavHost(
+            navController = navController,
+        )
     }
 }
